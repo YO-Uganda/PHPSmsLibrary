@@ -55,13 +55,13 @@ class YoSMS {
     * @param string $to the phone numbers you would like the SMS to be sent to (Comma Separated)
     * @return array
     */
-	public function send_sms($message, $to){
+	public function send_sms($message, $msisdn){
 		$url = "http://smgw1.yo.co.ug:9100/sendsms";
 		$url .= "?ybsacctno=".$this->username;
 		$url .= "&password=".$this->password;
-		$url .= "&origin=".$this->from;
+		$url .= "&origin=".$this->origin;
 		$url .= "&sms_content=".urlencode($message);
-		$url .= "&destinations=".$to;
+		$url .= "&destinations=".$msisdn;
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
